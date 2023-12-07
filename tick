@@ -1,0 +1,14 @@
+        newCollage.stickers[stickerIndex] = stickerReducer.reduce(
+            newCollage.stickers[stickerIndex],
+            action
+        )
+        
+        return newCollage
+    }
+    
+    private func connectControlPoints(_ ids: Set<String>,
+                                      in collage: Collage) -> Collage {
+        
+        var newCollage = collage
+        guard let index = newCollage.dependencies.firstIndex(where: {
+            !$0.pointIDs.intersection(ids).isEmpty
